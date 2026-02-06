@@ -16,7 +16,7 @@ export default function Hero() {
                     <h2 className="text-cyber-cyan font-heading text-lg md:text-xl tracking-[0.2em] uppercase">
                         India based
                     </h2>
-                    <h1 className="text-6xl md:text-8xl lg:text-9xl font-heading font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-white/50">
+                    <h1 className="text-6xl md:text-8xl lg:text-9xl font-heading font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-nebula-pink/50">
                         REET
                         <br />
                         KUMARI

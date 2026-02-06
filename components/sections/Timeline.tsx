@@ -33,8 +33,8 @@ const experiences = [
 export default function Timeline() {
     return (
         <section className="relative w-full py-20 px-6 md:px-12 flex flex-col items-center">
-            <h2 className="text-4xl md:text-6xl font-heading font-bold text-white mb-16 tracking-tighter">
-                <span className="text-cyber-cyan">#</span> TIMELINE
+            <h2 className="text-4xl md:text-6xl font-heading font-bold text-white mb-16 tracking-tighter text-center uppercase">
+                TIMELINE
             </h2>
 
             <div className="relative w-full max-w-4xl">
@@ -53,8 +53,8 @@ export default function Timeline() {
                                 }`}
                         >
                             {/* Timeline Node */}
-                            <div className="absolute left-0 md:left-1/2 md:-translate-x-1/2 w-10 h-10 flex items-center justify-center bg-obsidian border border-cyber-cyan rounded-full z-10 shadow-[0_0_15px_rgba(0,242,255,0.3)]">
-                                <div className="w-3 h-3 bg-cyber-cyan rounded-full animate-pulse" />
+                            <div className="absolute left-0 md:left-1/2 md:-translate-x-1/2 w-10 h-10 flex items-center justify-center bg-obsidian border border-nebula-pink rounded-full z-10 shadow-[0_0_20px_rgba(255,0,122,0.4)]">
+                                <div className="w-3 h-3 bg-nebula-pink rounded-full animate-pulse" />
                             </div>
 
                             {/* Content Card */}
