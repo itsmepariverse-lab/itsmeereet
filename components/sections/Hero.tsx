@@ -28,7 +28,7 @@ export default function Hero() {
                         transition={{ duration: 0.8, delay: 0.5 }}
                         className="text-gray-400 font-sans text-sm md:text-base tracking-widest uppercase max-w-xl mx-auto"
                     >
-                        Web3 Operations Expert | Community Strategist | Physics Scholar
+                        Web3 Operations Expert | Community Strategist
                     </motion.p>
                 </motion.div>
             </div>
