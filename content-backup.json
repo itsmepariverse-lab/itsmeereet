@@ -1,0 +1,205 @@
+{
+    "note": "This file contains the SCHEMA STRUCTURES from the Sanity configuration. The actual content is stored in the Sanity cloud and must be exported separately if needed.",
+    "schemas": {
+        "experience": {
+            "name": "experience",
+            "title": "Experience",
+            "type": "document",
+            "fields": [
+                {
+                    "name": "role",
+                    "title": "Role",
+                    "type": "string"
+                },
+                {
+                    "name": "company",
+                    "title": "Company",
+                    "type": "string"
+                },
+                {
+                    "name": "duration",
+                    "title": "Duration",
+                    "type": "string"
+                },
+                {
+                    "name": "description",
+                    "title": "Description",
+                    "type": "array",
+                    "of": [
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "name": "order",
+                    "title": "Order",
+                    "type": "number"
+                }
+            ]
+        },
+        "education": {
+            "name": "education",
+            "title": "Education",
+            "type": "document",
+            "fields": [
+                {
+                    "name": "degree",
+                    "title": "Degree / Certificate",
+                    "type": "string"
+                },
+                {
+                    "name": "institution",
+                    "title": "Institution",
+                    "type": "string"
+                },
+                {
+                    "name": "status",
+                    "title": "Status / Grade",
+                    "type": "string"
+                },
+                {
+                    "name": "year",
+                    "title": "Year / Duration",
+                    "type": "string"
+                },
+                {
+                    "name": "order",
+                    "title": "Order",
+                    "type": "number"
+                }
+            ]
+        },
+        "project": {
+            "name": "project",
+            "title": "Project",
+            "type": "document",
+            "fields": [
+                {
+                    "name": "title",
+                    "title": "Title",
+                    "type": "string"
+                },
+                {
+                    "name": "description",
+                    "title": "Description",
+                    "type": "text"
+                },
+                {
+                    "name": "link",
+                    "title": "Link",
+                    "type": "url"
+                },
+                {
+                    "name": "tags",
+                    "title": "Tags",
+                    "type": "array",
+                    "of": [
+                        {
+                            "type": "string"
+                        }
+                    ]
+                }
+            ]
+        },
+        "skill": {
+            "name": "skill",
+            "title": "Skill",
+            "type": "document",
+            "fields": [
+                {
+                    "name": "title",
+                    "title": "Skill Title",
+                    "type": "string"
+                },
+                {
+                    "name": "category",
+                    "title": "Category",
+                    "type": "string",
+                    "options": {
+                        "list": [
+                            {
+                                "title": "Technical",
+                                "value": "technical"
+                            },
+                            {
+                                "title": "Soft Skill",
+                                "value": "soft"
+                            },
+                            {
+                                "title": "Tool",
+                                "value": "tool"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "profile": {
+            "name": "profile",
+            "title": "Profile",
+            "type": "document",
+            "fields": [
+                {
+                    "name": "name",
+                    "title": "Name",
+                    "type": "string"
+                },
+                {
+                    "name": "role",
+                    "title": "Role",
+                    "type": "string"
+                },
+                {
+                    "name": "summary",
+                    "title": "Professional Summary",
+                    "type": "text"
+                },
+                {
+                    "name": "email",
+                    "title": "Email",
+                    "type": "string"
+                },
+                {
+                    "name": "phone",
+                    "title": "Phone",
+                    "type": "string"
+                }
+            ]
+        },
+        "hobby": {
+            "name": "hobby",
+            "title": "Hobby",
+            "type": "document",
+            "fields": [
+                {
+                    "name": "name",
+                    "title": "Hobby Name",
+                    "type": "string"
+                },
+                {
+                    "name": "icon",
+                    "title": "Emoji Icon",
+                    "type": "string"
+                }
+            ]
+        },
+        "declaration": {
+            "name": "declaration",
+            "title": "Declaration",
+            "type": "document",
+            "fields": [
+                {
+                    "name": "statement",
+                    "title": "Statement",
+                    "type": "text"
+                },
+                {
+                    "name": "name",
+                    "title": "Name",
+                    "type": "string"
+                }
+            ]
+        }
+    }
+}
