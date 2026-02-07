@@ -1,0 +1,45 @@
+fragment ProfileParts on Profile {
+  __typename
+  name
+  role
+  summary
+  email
+  phone
+  image
+}
+
+fragment ExperienceParts on Experience {
+  __typename
+  role
+  company
+  duration
+  description
+  order
+}
+
+fragment EducationParts on Education {
+  __typename
+  degree
+  institution
+  status
+  year
+  order
+}
+
+fragment SkillParts on Skill {
+  __typename
+  title
+  category
+}
+
+fragment HobbyParts on Hobby {
+  __typename
+  name
+  icon
+}
+
+fragment DeclarationParts on Declaration {
+  __typename
+  statement
+  name
+}
