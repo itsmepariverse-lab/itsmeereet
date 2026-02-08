@@ -3,25 +3,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const techStack = [
-    {
-        category: 'Moderation Suite',
-        tools: ['Discord (Advanced Architecture)', 'Wick', 'MEE6', 'Carl-bot', 'Telegram (Combot, Rose, Shield)'],
-    },
-    {
-        category: 'Web3 Growth Tools',
-        tools: ['Galxe', 'Zealy', 'Layer3', 'Snapshot (Governance)'],
-    },
-    {
-        category: 'Operations Suite',
-        tools: ['Notion', 'GitBook', 'Google Workspace', 'Microsoft Excel'],
-    },
-    {
-        category: 'Security Tools',
-        tools: ['Revoke.cash', 'Etherscan', 'Anti-Phishing logic'],
-    },
-];
-
 export default function TechGrid({ data }: { data: any[] }) {
     const techStack = data || [
         {

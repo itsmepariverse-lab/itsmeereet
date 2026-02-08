@@ -3,7 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-export default function Hero({ data }: { data: any }) {
+export default function Hero({ data }: { data: Record<string, any> }) {
     return (
         <section className="relative h-screen w-full flex flex-col justify-center items-center z-10 pointer-events-none">
             <div className="container mx-auto px-6 text-center">

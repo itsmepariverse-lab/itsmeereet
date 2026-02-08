@@ -1,11 +1,10 @@
 'use client';
 
-import React, { useRef, useState } from 'react';
-import { motion, useSpring, useMotionValue, useTransform } from 'framer-motion';
+import React, { useRef } from 'react';
+import { motion, useSpring, useMotionValue } from 'framer-motion';
 
 export default function Magnetic({ children }: { children: React.ReactNode }) {
     const ref = useRef<HTMLDivElement>(null);
-    const [isHovered, setIsHovered] = useState(false);
 
     const x = useMotionValue(0);
     const y = useMotionValue(0);
@@ -31,14 +30,12 @@ export default function Magnetic({ children }: { children: React.ReactNode }) {
     const handleMouseLeave = () => {
         x.set(0);
         y.set(0);
-        setIsHovered(false);
     };
 
     return (
         <motion.div
             ref={ref}
             onMouseMove={handleMouseMove}
-            onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={handleMouseLeave}
             style={{ x: springX, y: springY }}
             className="inline-block"

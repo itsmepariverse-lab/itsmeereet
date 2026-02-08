@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Wallet } from 'lucide-react';
+
 import Magnetic from './Magnetic';
 
 export default function Header() {

@@ -2,14 +2,7 @@
 
 import React from 'react';
 
-const marqueeItems = [
-    'WEB3 OPERATIONS',
-    'COMMUNITY STRATEGY',
-    'DECENTRALIZED GOVERNANCE',
-    'PROTOCOL SECURITY',
-    'ECOSYSTEM GROWTH',
-    'PHYSICS SCHOLAR'
-];
+
 
 export default function Marquee({ items }: { items: string[] }) {
     const marqueeItems = items || [

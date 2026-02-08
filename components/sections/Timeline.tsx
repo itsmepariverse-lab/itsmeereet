@@ -3,32 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const experiences = [
-    {
-        year: '2024 – Present',
-        title: 'Community Moderator',
-        company: 'Kima Network',
-        description: 'Focus on interoperability, 25k+ member management, and sybil/scam mitigation.',
-    },
-    {
-        year: '2023 – 2024',
-        title: 'Community Moderator',
-        company: 'Velodrome Finance',
-        description: 'Focus on DeFi support, ve(3,3) mechanics, and liquidity provider assistance.',
-    },
-    {
-        year: '2023 (Early-Mid)',
-        title: 'Growth Contributor',
-        company: 'Galxe',
-        description: 'Focus on quest infrastructure, OAT distribution, and massive-scale user onboarding.',
-    },
-    {
-        year: 'Jan 2023',
-        title: 'Operations Intern',
-        company: 'Confidential',
-        description: 'Structured data management and GitBook documentation.',
-    },
-];
+
 
 export default function Timeline({ items }: { items: any[] }) {
     const experiences = items || [

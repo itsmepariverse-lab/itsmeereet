@@ -3,6 +3,8 @@ import client from "@/tina/__generated__/client";
 import HomeClient from '@/components/HomeClient';
 import type { Metadata } from 'next';
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
     title: 'Reet Kumari | Operations Executive',
     description: 'Operations Executive & Administrative Coordinator specializing in workflow optimization and efficiency.',
@@ -43,9 +45,9 @@ export default async function Home() {
                 summary: profile.summary || "",
                 email: profile.email || "",
                 phone: profile.phone || "",
-                target_roles: (profile.target_roles || []).filter((r): r is string => r !== null),
-                credentials: (profile.credentials || []).filter((c): c is { label: string; value: string } => c !== null && !!c.label && !!c.value).map(c => ({ label: c.label!, value: c.value! })),
-                strengths: (profile.strengths || []).filter((s): s is { title: string; description: string } => s !== null && !!s.title && !!s.description).map(s => ({ title: s.title!, description: s.description! })),
+                target_roles: ((profile as any).target_roles || []).filter((r: any): r is string => r !== null),
+                credentials: ((profile as any).credentials || []).filter((c: any): c is { label: string; value: string } => c !== null && !!c.label && !!c.value).map((c: any) => ({ label: c.label!, value: c.value! })),
+                strengths: (profile.strengths || []).filter((s: any): s is { title: string; description: string } => s !== null && !!s.title && !!s.description).map((s: any) => ({ title: s.title!, description: s.description! })),
             }}
             experience={experience as any}
             education={education as any}

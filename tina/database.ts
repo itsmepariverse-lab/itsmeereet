@@ -25,7 +25,7 @@ export default isLocal
                 token: process.env.KV_REST_API_TOKEN || "",
             },
             debug: process.env.DEBUG === "true" || false,
-        }),
+        }) as any,
     });
 
 

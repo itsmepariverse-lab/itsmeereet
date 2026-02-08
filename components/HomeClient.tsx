@@ -86,7 +86,7 @@ export default function HomeClient({
             } else {
                 setFormStatus('error');
             }
-        } catch (err) {
+        } catch {
             setFormStatus('error');
         }
     }
@@ -421,7 +421,7 @@ export default function HomeClient({
                 <div className="container mx-auto px-6 max-w-2xl">
                     <div className="text-center mb-12">
                         <h2 className="text-3xl font-bold text-slate-900 mb-4">Get In Touch</h2>
-                        <p className="text-slate-600">Have an inquiry or opportunity? I'd love to hear from you.</p>
+                        <p className="text-slate-600">Have an inquiry or opportunity? I&apos;d love to hear from you.</p>
                     </div>
 
                     {formStatus === 'success' ? (
@@ -514,7 +514,7 @@ export default function HomeClient({
             <section className="py-12 bg-slate-50 border-t border-slate-200">
                 <div className="container mx-auto px-6 max-w-4xl text-center">
                     <h3 className="text-sm font-bold text-slate-400 uppercase tracking-widest mb-4">{declaration?.statement ? "Declaration" : "Declaration"}</h3>
-                    <p className="text-slate-600 italic mb-6">"{declaration?.statement || "I hereby declare that all the details furnished here are true to the best of my knowledge and belief."}"</p>
+                    <p className="text-slate-600 italic mb-6">&quot;{declaration?.statement || "I hereby declare that all the details furnished here are true to the best of my knowledge and belief."}&quot;</p>
                     <div className="flex justify-center flex-col items-center">
                         <span className="font-serif font-bold text-xl text-slate-900">{declaration?.name || "Reet Kumari"}</span>
                     </div>

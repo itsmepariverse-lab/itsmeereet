@@ -10,6 +10,8 @@ import BackgroundParticles from '@/components/ui/BackgroundParticles';
 import Marquee from '@/components/ui/Marquee';
 import client from "@/tina/__generated__/client";
 
+export const dynamic = "force-dynamic";
+
 export const metadata = {
   title: 'Reet Kumari | Web3 Operations',
   description: 'Web3 Operations Expert & Community Strategist',

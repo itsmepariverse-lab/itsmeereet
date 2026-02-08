@@ -3,20 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const expertiseData = [
-    {
-        category: "Education",
-        items: ["M.Sc. Physics (Pursuing)", "B.Sc. Physics", "Core Scientific Principles", "Mathematical Logic"]
-    },
-    {
-        category: "Skills",
-        items: ["English 40 WPM", "Hindi 35 WPM", "Data Entry", "Conflict Resolution", "Tech Documentation", "Customer Service"]
-    },
-    {
-        category: "Hobbies",
-        items: ["Browsing", "Travelling", "Art", "Dancing", "Writing"]
-    }
-];
+
 
 export default function Skills({ data }: { data: any[] }) {
     const [activeTab, setActiveTab] = React.useState(0);

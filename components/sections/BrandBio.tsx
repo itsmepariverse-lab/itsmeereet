@@ -3,7 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-export default function BrandBio({ data }: { data: any }) {
+export default function BrandBio({ data }: { data: Record<string, any> }) {
     return (
         <section className="relative w-full py-24 px-6 md:px-12 bg-black flex justify-center">
             <div className="max-w-4xl text-center">
