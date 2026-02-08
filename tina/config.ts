@@ -7,7 +7,6 @@ export default defineConfig({
     branch,
     clientId: process.env.NEXT_PUBLIC_TINA_CLIENT_ID || "dummy-client-id", // Dummy for self-hosted
     token: process.env.TINA_TOKEN || "dummy-token", // Dummy for self-hosted
-    token: process.env.TINA_TOKEN || "dummy-token", // Dummy for self-hosted
     contentApiUrlOverride: "/api/tina/graphql",
 
     build: {

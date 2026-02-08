@@ -1,5 +1,5 @@
 
-import client from "@/tina/__generated__/client";
+import client from "@/lib/tina-client";
 import HomeClient from '@/components/HomeClient';
 import type { Metadata } from 'next';
 

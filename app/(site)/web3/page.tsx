@@ -8,7 +8,7 @@ import TechGrid from '@/components/sections/TechGrid';
 import Footer from '@/components/ui/Footer';
 import BackgroundParticles from '@/components/ui/BackgroundParticles';
 import Marquee from '@/components/ui/Marquee';
-import client from "@/tina/__generated__/client";
+import client from "@/lib/tina-client";
 
 export const dynamic = "force-dynamic";
 

@@ -7,7 +7,7 @@ var config_default = defineConfig({
   // Dummy for self-hosted
   token: process.env.TINA_TOKEN || "dummy-token",
   // Dummy for self-hosted
-  // Remove contentApiUrlOverride - let TinaCMS use the default client which will call our API route
+  contentApiUrlOverride: "/api/tina/graphql",
   build: {
     outputFolder: "admin",
     publicFolder: "public"
