@@ -20,12 +20,27 @@ export default isLocal
             branch,
         }),
         databaseAdapter: new RedisLevel({
-            redis: {
-                url: process.env.KV_REST_API_URL || process.env.KV_URL || "",
-                token: process.env.KV_REST_API_TOKEN || "",
-            },
-            debug: process.env.DEBUG === "true" || false,
-        }) as any,
-    });
+            databaseAdapter: new RedisLevel({
+                redis: {
+                    url: (() => {
+                        const url = process.env.KV_REST_API_URL || process.env.KV_URL;
+                        if (!url) {
+                            console.error("❌ ERROR: KV_REST_API_URL is missing or empty.");
+                            throw new Error("Missing KV_REST_API_URL environment variable. Please add it to your Vercel project settings.");
+                        }
+                        return url;
+                    })(),
+                    token: (() => {
+                        const token = process.env.KV_REST_API_TOKEN;
+                        if (!token) {
+                            console.error("❌ ERROR: KV_REST_API_TOKEN is missing or empty.");
+                            throw new Error("Missing KV_REST_API_TOKEN environment variable. Please add it to your Vercel project settings.");
+                        }
+                        return token;
+                    })(),
+                },
+                debug: process.env.DEBUG === "true" || false,
+            }) as any,
+        });
 
 
