@@ -30,7 +30,17 @@ const experiences = [
     },
 ];
 
-export default function Timeline() {
+export default function Timeline({ items }: { items: any[] }) {
+    const experiences = items || [
+        {
+            year: '2024 – Present',
+            title: 'Community Moderator',
+            company: 'Kima Network',
+            description: 'Focus on interoperability, 25k+ member management, and sybil/scam mitigation.',
+        },
+        // ... (fallback data removed for brevity, will use CMS data mostly)
+    ];
+
     return (
         <section className="relative w-full py-20 px-6 md:px-12 flex flex-col items-center">
             <h2 className="text-4xl md:text-6xl font-heading font-bold text-white mb-16 tracking-tighter text-center uppercase">

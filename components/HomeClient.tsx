@@ -35,6 +35,9 @@ interface Profile {
     summary: string;
     email: string;
     phone: string;
+    target_roles?: string[];
+    credentials?: { label: string; value: string }[];
+    strengths?: { title: string; description: string }[];
 }
 
 interface Declaration {
@@ -171,11 +174,18 @@ export default function HomeClient({
                         <h2 className="text-2xl font-serif font-bold text-slate-900">Target Roles</h2>
                     </div>
                     <div className="flex flex-wrap justify-center gap-4">
-                        {['Operations Associate', 'Administrative Coordinator', 'Back Office Executive', 'Workflow Specialist', 'Office Administrator', 'Support Analyst'].map((role) => (
+                        {(profile.target_roles && profile.target_roles.length > 0) ? profile.target_roles.map((role) => (
                             <span key={role} className="px-5 py-2 bg-slate-50 border border-slate-200 rounded-full text-slate-700 font-medium hover:border-slate-900 hover:bg-slate-900 hover:text-white transition-all cursor-default">
                                 {role}
                             </span>
-                        ))}
+                        )) : (
+                            // Fallback
+                            ['Operations Associate', 'Administrative Coordinator', 'Back Office Executive', 'Workflow Specialist', 'Office Administrator', 'Support Analyst'].map((role) => (
+                                <span key={role} className="px-5 py-2 bg-slate-50 border border-slate-200 rounded-full text-slate-700 font-medium hover:border-slate-900 hover:bg-slate-900 hover:text-white transition-all cursor-default">
+                                    {role}
+                                </span>
+                            ))
+                        )}
                     </div>
                 </div>
             </section>
@@ -184,22 +194,32 @@ export default function HomeClient({
             <section className="py-20 bg-slate-900 text-white">
                 <div className="container mx-auto px-6 max-w-6xl">
                     <div className="grid md:grid-cols-4 gap-8">
-                        <div className="p-6 bg-slate-800/50 rounded-lg border border-slate-700 hover:bg-slate-800 transition-colors">
-                            <h3 className="text-xl font-bold mb-3 text-slate-100">Adaptability</h3>
-                            <p className="text-slate-400 text-sm leading-relaxed">Quick learner adaptable to new work environments and evolving operational needs.</p>
-                        </div>
-                        <div className="p-6 bg-slate-800/50 rounded-lg border border-slate-700 hover:bg-slate-800 transition-colors">
-                            <h3 className="text-xl font-bold mb-3 text-slate-100">Dedication</h3>
-                            <p className="text-slate-400 text-sm leading-relaxed">Hardworking professional committed to continuous growth and organizational success.</p>
-                        </div>
-                        <div className="p-6 bg-slate-800/50 rounded-lg border border-slate-700 hover:bg-slate-800 transition-colors">
-                            <h3 className="text-xl font-bold mb-3 text-slate-100">Problem Solving</h3>
-                            <p className="text-slate-400 text-sm leading-relaxed">Strong analytical abilities for identifying bottlenecks and implementing effective solutions.</p>
-                        </div>
-                        <div className="p-6 bg-slate-800/50 rounded-lg border border-slate-700 hover:bg-slate-800 transition-colors">
-                            <h3 className="text-xl font-bold mb-3 text-slate-100">Reliability</h3>
-                            <p className="text-slate-400 text-sm leading-relaxed">Punctual, dependable team player who ensures tasks are completed with precision.</p>
-                        </div>
+                        {(profile.strengths && profile.strengths.length > 0) ? profile.strengths.map((strength, index) => (
+                            <div key={index} className="p-6 bg-slate-800/50 rounded-lg border border-slate-700 hover:bg-slate-800 transition-colors">
+                                <h3 className="text-xl font-bold mb-3 text-slate-100">{strength.title}</h3>
+                                <p className="text-slate-400 text-sm leading-relaxed">{strength.description}</p>
+                            </div>
+                        )) : (
+                            // Fallback
+                            <>
+                                <div className="p-6 bg-slate-800/50 rounded-lg border border-slate-700 hover:bg-slate-800 transition-colors">
+                                    <h3 className="text-xl font-bold mb-3 text-slate-100">Adaptability</h3>
+                                    <p className="text-slate-400 text-sm leading-relaxed">Quick learner adaptable to new work environments and evolving operational needs.</p>
+                                </div>
+                                <div className="p-6 bg-slate-800/50 rounded-lg border border-slate-700 hover:bg-slate-800 transition-colors">
+                                    <h3 className="text-xl font-bold mb-3 text-slate-100">Dedication</h3>
+                                    <p className="text-slate-400 text-sm leading-relaxed">Hardworking professional committed to continuous growth and organizational success.</p>
+                                </div>
+                                <div className="p-6 bg-slate-800/50 rounded-lg border border-slate-700 hover:bg-slate-800 transition-colors">
+                                    <h3 className="text-xl font-bold mb-3 text-slate-100">Problem Solving</h3>
+                                    <p className="text-slate-400 text-sm leading-relaxed">Strong analytical abilities for identifying bottlenecks and implementing effective solutions.</p>
+                                </div>
+                                <div className="p-6 bg-slate-800/50 rounded-lg border border-slate-700 hover:bg-slate-800 transition-colors">
+                                    <h3 className="text-xl font-bold mb-3 text-slate-100">Reliability</h3>
+                                    <p className="text-slate-400 text-sm leading-relaxed">Punctual, dependable team player who ensures tasks are completed with precision.</p>
+                                </div>
+                            </>
+                        )}
                     </div>
                 </div>
             </section>
@@ -509,18 +529,27 @@ export default function HomeClient({
                         <div className="bg-slate-50 p-8 rounded-lg border border-slate-200">
                             <h3 className="font-serif font-bold text-lg text-slate-900 mb-4">Technical Credentials</h3>
                             <div className="space-y-3">
-                                <div className="flex justify-between items-center border-b border-slate-200 pb-2">
-                                    <span className="text-slate-600">Typing Speed (English)</span>
-                                    <span className="font-bold text-slate-900">40 WPM</span>
-                                </div>
-                                <div className="flex justify-between items-center border-b border-slate-200 pb-2">
-                                    <span className="text-slate-600">Typing Speed (Hindi)</span>
-                                    <span className="font-bold text-slate-900">35 WPM</span>
-                                </div>
-                                <div className="flex justify-between items-center pt-1">
-                                    <span className="text-slate-600">Certification</span>
-                                    <span className="font-bold text-slate-900">BCC Certified</span>
-                                </div>
+                                {(profile.credentials && profile.credentials.length > 0) ? profile.credentials.map((cred, index) => (
+                                    <div key={index} className="flex justify-between items-center border-b border-slate-200 pb-2 last:border-0 last:pb-0">
+                                        <span className="text-slate-600">{cred.label}</span>
+                                        <span className="font-bold text-slate-900">{cred.value}</span>
+                                    </div>
+                                )) : (
+                                    <>
+                                        <div className="flex justify-between items-center border-b border-slate-200 pb-2">
+                                            <span className="text-slate-600">Typing Speed (English)</span>
+                                            <span className="font-bold text-slate-900">40 WPM</span>
+                                        </div>
+                                        <div className="flex justify-between items-center border-b border-slate-200 pb-2">
+                                            <span className="text-slate-600">Typing Speed (Hindi)</span>
+                                            <span className="font-bold text-slate-900">35 WPM</span>
+                                        </div>
+                                        <div className="flex justify-between items-center pt-1">
+                                            <span className="text-slate-600">Certification</span>
+                                            <span className="font-bold text-slate-900">BCC Certified</span>
+                                        </div>
+                                    </>
+                                )}
                             </div>
                         </div>
 

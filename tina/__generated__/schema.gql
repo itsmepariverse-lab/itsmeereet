@@ -66,6 +66,8 @@ type Query {
   hobbyConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: HobbyFilter): HobbyConnection!
   declaration(relativePath: String): Declaration!
   declarationConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: DeclarationFilter): DeclarationConnection!
+  web3_page(relativePath: String): Web3_page!
+  web3_pageConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: Web3_pageFilter): Web3_pageConnection!
 }
 
 input DocumentFilter {
@@ -75,6 +77,7 @@ input DocumentFilter {
   skill: SkillFilter
   hobby: HobbyFilter
   declaration: DeclarationFilter
+  web3_page: Web3_pageFilter
 }
 
 type DocumentConnectionEdges {
@@ -100,7 +103,12 @@ type Collection {
   documents(before: String, after: String, first: Float, last: Float, sort: String, filter: DocumentFilter, folder: String): DocumentConnection!
 }
 
-union DocumentNode = Profile | Experience | Education | Skill | Hobby | Declaration | Folder
+union DocumentNode = Profile | Experience | Education | Skill | Hobby | Declaration | Web3_page | Folder
+
+type ProfileStrengths {
+  title: String
+  description: String
+}
 
 type Profile implements Node & Document {
   name: String!
@@ -109,6 +117,7 @@ type Profile implements Node & Document {
   email: String
   phone: String
   image: String
+  strengths: [ProfileStrengths]
   id: ID!
   _sys: SystemInfo!
   _values: JSON!
@@ -128,6 +137,11 @@ input ImageFilter {
   in: [String]
 }
 
+input ProfileStrengthsFilter {
+  title: StringFilter
+  description: StringFilter
+}
+
 input ProfileFilter {
   name: StringFilter
   role: StringFilter
@@ -135,6 +149,7 @@ input ProfileFilter {
   email: StringFilter
   phone: StringFilter
   image: ImageFilter
+  strengths: ProfileStrengthsFilter
 }
 
 type ProfileConnectionEdges {
@@ -290,6 +305,100 @@ type DeclarationConnection implements Connection {
   edges: [DeclarationConnectionEdges]
 }
 
+type Web3_pageHero {
+  tagline_top: String
+  name: String
+  tagline_bottom: String
+}
+
+type Web3_pageMarquee {
+  items: [String]
+}
+
+type Web3_pageBrand_bio {
+  bio: String
+}
+
+type Web3_pageTimeline {
+  year: String
+  title: String
+  company: String
+  description: String
+}
+
+type Web3_pageExpertise {
+  category: String
+  items: [String]
+}
+
+type Web3_pageTech_stack {
+  category: String
+  tools: [String]
+}
+
+type Web3_page implements Node & Document {
+  hero: Web3_pageHero
+  marquee: Web3_pageMarquee
+  brand_bio: Web3_pageBrand_bio
+  timeline: [Web3_pageTimeline]
+  expertise: [Web3_pageExpertise]
+  tech_stack: [Web3_pageTech_stack]
+  id: ID!
+  _sys: SystemInfo!
+  _values: JSON!
+}
+
+input Web3_pageHeroFilter {
+  tagline_top: StringFilter
+  name: StringFilter
+  tagline_bottom: StringFilter
+}
+
+input Web3_pageMarqueeFilter {
+  items: StringFilter
+}
+
+input Web3_pageBrand_bioFilter {
+  bio: StringFilter
+}
+
+input Web3_pageTimelineFilter {
+  year: StringFilter
+  title: StringFilter
+  company: StringFilter
+  description: StringFilter
+}
+
+input Web3_pageExpertiseFilter {
+  category: StringFilter
+  items: StringFilter
+}
+
+input Web3_pageTech_stackFilter {
+  category: StringFilter
+  tools: StringFilter
+}
+
+input Web3_pageFilter {
+  hero: Web3_pageHeroFilter
+  marquee: Web3_pageMarqueeFilter
+  brand_bio: Web3_pageBrand_bioFilter
+  timeline: Web3_pageTimelineFilter
+  expertise: Web3_pageExpertiseFilter
+  tech_stack: Web3_pageTech_stackFilter
+}
+
+type Web3_pageConnectionEdges {
+  cursor: String!
+  node: Web3_page
+}
+
+type Web3_pageConnection implements Connection {
+  pageInfo: PageInfo!
+  totalCount: Float!
+  edges: [Web3_pageConnectionEdges]
+}
+
 type Mutation {
   addPendingDocument(collection: String!, relativePath: String!, template: String): DocumentNode!
   updateDocument(collection: String, relativePath: String!, params: DocumentUpdateMutation!): DocumentNode!
@@ -308,6 +417,8 @@ type Mutation {
   createHobby(relativePath: String!, params: HobbyMutation!): Hobby!
   updateDeclaration(relativePath: String!, params: DeclarationMutation!): Declaration!
   createDeclaration(relativePath: String!, params: DeclarationMutation!): Declaration!
+  updateWeb3_page(relativePath: String!, params: Web3_pageMutation!): Web3_page!
+  createWeb3_page(relativePath: String!, params: Web3_pageMutation!): Web3_page!
 }
 
 input DocumentUpdateMutation {
@@ -317,6 +428,7 @@ input DocumentUpdateMutation {
   skill: SkillMutation
   hobby: HobbyMutation
   declaration: DeclarationMutation
+  web3_page: Web3_pageMutation
   relativePath: String
 }
 
@@ -327,6 +439,12 @@ input DocumentMutation {
   skill: SkillMutation
   hobby: HobbyMutation
   declaration: DeclarationMutation
+  web3_page: Web3_pageMutation
+}
+
+input ProfileStrengthsMutation {
+  title: String
+  description: String
 }
 
 input ProfileMutation {
@@ -336,6 +454,7 @@ input ProfileMutation {
   email: String
   phone: String
   image: String
+  strengths: [ProfileStrengthsMutation]
 }
 
 input ExperienceMutation {
@@ -367,6 +486,46 @@ input HobbyMutation {
 input DeclarationMutation {
   statement: String
   name: String
+}
+
+input Web3_pageHeroMutation {
+  tagline_top: String
+  name: String
+  tagline_bottom: String
+}
+
+input Web3_pageMarqueeMutation {
+  items: [String]
+}
+
+input Web3_pageBrand_bioMutation {
+  bio: String
+}
+
+input Web3_pageTimelineMutation {
+  year: String
+  title: String
+  company: String
+  description: String
+}
+
+input Web3_pageExpertiseMutation {
+  category: String
+  items: [String]
+}
+
+input Web3_pageTech_stackMutation {
+  category: String
+  tools: [String]
+}
+
+input Web3_pageMutation {
+  hero: Web3_pageHeroMutation
+  marquee: Web3_pageMarqueeMutation
+  brand_bio: Web3_pageBrand_bioMutation
+  timeline: [Web3_pageTimelineMutation]
+  expertise: [Web3_pageExpertiseMutation]
+  tech_stack: [Web3_pageTech_stackMutation]
 }
 
 schema {

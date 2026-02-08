@@ -13,7 +13,6 @@ export default function AdminPage() {
             const tinaCMS = new TinaCMS({
                 enabled: true,
                 sidebar: true,
-                toolbar: true,
             });
 
             setCms(tinaCMS);

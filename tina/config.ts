@@ -5,6 +5,9 @@ const branch = process.env.GITHUB_BRANCH || process.env.VERCEL_GIT_COMMIT_REF ||
 
 export default defineConfig({
     branch,
+    clientId: process.env.NEXT_PUBLIC_TINA_CLIENT_ID || "dummy-client-id", // Dummy for self-hosted
+    token: process.env.TINA_TOKEN || "dummy-token", // Dummy for self-hosted
+    // Remove contentApiUrlOverride - let TinaCMS use the default client which will call our API route
 
     build: {
         outputFolder: "admin",
@@ -16,14 +19,15 @@ export default defineConfig({
             publicFolder: "public",
         },
     },
-    search: {
-        tina: {
-            indexerToken: process.env.TINA_SEARCH_TOKEN,
-            stopwordLanguages: ['eng'],
-        },
-        indexBatchSize: 100,
-        maxSearchIndexFieldLength: 100,
-    },
+    // Search disabled for self-hosted setup
+    // search: {
+    //     tina: {
+    //         indexerToken: process.env.TINA_SEARCH_TOKEN,
+    //         stopwordLanguages: ['eng'],
+    //     },
+    //     indexBatchSize: 100,
+    //     maxSearchIndexFieldLength: 100,
+    // },
     // See docs on content modeling for more info on how to setup new content models: https://tina.io/docs/schema/
     schema: {
         collections: [
@@ -73,6 +77,29 @@ export default defineConfig({
                         type: "image",
                         name: "image",
                         label: "Profile Image",
+                    },
+                    {
+                        type: "object",
+                        name: "strengths",
+                        label: "Strengths",
+                        list: true,
+                        ui: {
+                            itemProps: (item) => {
+                                return { label: item?.title || 'Strength' };
+                            },
+                        },
+                        fields: [
+                            {
+                                type: "string",
+                                name: "title",
+                                label: "Title",
+                            },
+                            {
+                                type: "string",
+                                name: "description",
+                                label: "Description",
+                            },
+                        ],
                     },
                 ],
             },
@@ -213,6 +240,151 @@ export default defineConfig({
                         type: "string",
                         name: "name",
                         label: "Name",
+                    },
+                ],
+            },
+            {
+                name: "web3_page",
+                label: "Web3 Page",
+                path: "content/web3",
+                format: "md",
+                ui: {
+                    allowedActions: {
+                        create: false,
+                        delete: false,
+                    },
+                },
+                fields: [
+                    {
+                        type: "object",
+                        name: "hero",
+                        label: "Hero Section",
+                        fields: [
+                            {
+                                type: "string",
+                                name: "tagline_top",
+                                label: "Top Tagline",
+                            },
+                            {
+                                type: "string",
+                                name: "name",
+                                label: "Name Display",
+                            },
+                            {
+                                type: "string",
+                                name: "tagline_bottom",
+                                label: "Bottom Tagline",
+                            },
+                        ],
+                    },
+                    {
+                        type: "object",
+                        name: "marquee",
+                        label: "Marquee",
+                        fields: [
+                            {
+                                type: "string",
+                                name: "items",
+                                label: "Items",
+                                list: true,
+                            },
+                        ],
+                    },
+                    {
+                        type: "object",
+                        name: "brand_bio",
+                        label: "Brand Bio",
+                        fields: [
+                            {
+                                type: "string",
+                                name: "bio",
+                                label: "Bio Text",
+                                ui: {
+                                    component: "textarea",
+                                },
+                            },
+                        ],
+                    },
+                    {
+                        type: "object",
+                        name: "timeline",
+                        label: "Timeline",
+                        list: true,
+                        ui: {
+                            itemProps: (item) => {
+                                return { label: item?.title || 'Experience' };
+                            },
+                        },
+                        fields: [
+                            {
+                                type: "string",
+                                name: "year",
+                                label: "Year",
+                            },
+                            {
+                                type: "string",
+                                name: "title",
+                                label: "Title",
+                            },
+                            {
+                                type: "string",
+                                name: "company",
+                                label: "Company",
+                            },
+                            {
+                                type: "string",
+                                name: "description",
+                                label: "Description",
+                            },
+                        ],
+                    },
+                    {
+                        type: "object",
+                        name: "expertise",
+                        label: "Expertise",
+                        list: true,
+                        ui: {
+                            itemProps: (item) => {
+                                return { label: item?.category || 'Category' };
+                            },
+                        },
+                        fields: [
+                            {
+                                type: "string",
+                                name: "category",
+                                label: "Category",
+                            },
+                            {
+                                type: "string",
+                                name: "items",
+                                label: "Items",
+                                list: true,
+                            },
+                        ],
+                    },
+                    {
+                        type: "object",
+                        name: "tech_stack",
+                        label: "Tech Stack",
+                        list: true,
+                        ui: {
+                            itemProps: (item) => {
+                                return { label: item?.category || 'Category' };
+                            },
+                        },
+                        fields: [
+                            {
+                                type: "string",
+                                name: "category",
+                                label: "Category",
+                            },
+                            {
+                                type: "string",
+                                name: "tools",
+                                label: "Tools",
+                                list: true,
+                            },
+                        ],
                     },
                 ],
             },

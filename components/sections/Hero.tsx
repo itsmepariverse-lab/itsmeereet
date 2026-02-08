@@ -3,7 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-export default function Hero() {
+export default function Hero({ data }: { data: any }) {
     return (
         <section className="relative h-screen w-full flex flex-col justify-center items-center z-10 pointer-events-none">
             <div className="container mx-auto px-6 text-center">
@@ -14,12 +14,10 @@ export default function Hero() {
                     className="space-y-4"
                 >
                     <h2 className="text-cyber-cyan font-heading text-lg md:text-xl tracking-[0.2em] uppercase">
-                        India based
+                        {data?.tagline_top || 'India based'}
                     </h2>
                     <h1 className="text-6xl md:text-8xl lg:text-9xl font-heading font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-nebula-pink/50">
-                        REET
-                        <br />
-                        KUMARI
+                        {data?.name || 'REET KUMARI'}
                     </h1>
                     <div className="h-1 w-24 mx-auto bg-cyber-cyan/50 rounded-full" />
                     <motion.p
@@ -28,7 +26,7 @@ export default function Hero() {
                         transition={{ duration: 0.8, delay: 0.5 }}
                         className="text-gray-400 font-sans text-sm md:text-base tracking-widest uppercase max-w-xl mx-auto"
                     >
-                        Web3 Operations Expert | Community Strategist
+                        {data?.tagline_bottom || 'Web3 Operations Expert | Community Strategist'}
                     </motion.p>
                 </motion.div>
             </div>

@@ -6,6 +6,11 @@ fragment ProfileParts on Profile {
   email
   phone
   image
+  strengths {
+    __typename
+    title
+    description
+  }
 }
 
 fragment ExperienceParts on Experience {
@@ -42,4 +47,39 @@ fragment DeclarationParts on Declaration {
   __typename
   statement
   name
+}
+
+fragment Web3_pageParts on Web3_page {
+  __typename
+  hero {
+    __typename
+    tagline_top
+    name
+    tagline_bottom
+  }
+  marquee {
+    __typename
+    items
+  }
+  brand_bio {
+    __typename
+    bio
+  }
+  timeline {
+    __typename
+    year
+    title
+    company
+    description
+  }
+  expertise {
+    __typename
+    category
+    items
+  }
+  tech_stack {
+    __typename
+    category
+    tools
+  }
 }

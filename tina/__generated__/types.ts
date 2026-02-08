@@ -94,6 +94,8 @@ export type Query = {
   hobbyConnection: HobbyConnection;
   declaration: Declaration;
   declarationConnection: DeclarationConnection;
+  web3_page: Web3_Page;
+  web3_pageConnection: Web3_PageConnection;
 };
 
 
@@ -207,6 +209,21 @@ export type QueryDeclarationConnectionArgs = {
   filter?: InputMaybe<DeclarationFilter>;
 };
 
+
+export type QueryWeb3_PageArgs = {
+  relativePath?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+export type QueryWeb3_PageConnectionArgs = {
+  before?: InputMaybe<Scalars['String']['input']>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Float']['input']>;
+  last?: InputMaybe<Scalars['Float']['input']>;
+  sort?: InputMaybe<Scalars['String']['input']>;
+  filter?: InputMaybe<Web3_PageFilter>;
+};
+
 export type DocumentFilter = {
   profile?: InputMaybe<ProfileFilter>;
   experience?: InputMaybe<ExperienceFilter>;
@@ -214,6 +231,7 @@ export type DocumentFilter = {
   skill?: InputMaybe<SkillFilter>;
   hobby?: InputMaybe<HobbyFilter>;
   declaration?: InputMaybe<DeclarationFilter>;
+  web3_page?: InputMaybe<Web3_PageFilter>;
 };
 
 export type DocumentConnectionEdges = {
@@ -253,7 +271,13 @@ export type CollectionDocumentsArgs = {
   folder?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type DocumentNode = Profile | Experience | Education | Skill | Hobby | Declaration | Folder;
+export type DocumentNode = Profile | Experience | Education | Skill | Hobby | Declaration | Web3_Page | Folder;
+
+export type ProfileStrengths = {
+  __typename?: 'ProfileStrengths';
+  title?: Maybe<Scalars['String']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
+};
 
 export type Profile = Node & Document & {
   __typename?: 'Profile';
@@ -263,6 +287,7 @@ export type Profile = Node & Document & {
   email?: Maybe<Scalars['String']['output']>;
   phone?: Maybe<Scalars['String']['output']>;
   image?: Maybe<Scalars['String']['output']>;
+  strengths?: Maybe<Array<Maybe<ProfileStrengths>>>;
   id: Scalars['ID']['output'];
   _sys: SystemInfo;
   _values: Scalars['JSON']['output'];
@@ -282,6 +307,11 @@ export type ImageFilter = {
   in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
+export type ProfileStrengthsFilter = {
+  title?: InputMaybe<StringFilter>;
+  description?: InputMaybe<StringFilter>;
+};
+
 export type ProfileFilter = {
   name?: InputMaybe<StringFilter>;
   role?: InputMaybe<StringFilter>;
@@ -289,6 +319,7 @@ export type ProfileFilter = {
   email?: InputMaybe<StringFilter>;
   phone?: InputMaybe<StringFilter>;
   image?: InputMaybe<ImageFilter>;
+  strengths?: InputMaybe<ProfileStrengthsFilter>;
 };
 
 export type ProfileConnectionEdges = {
@@ -461,6 +492,109 @@ export type DeclarationConnection = Connection & {
   edges?: Maybe<Array<Maybe<DeclarationConnectionEdges>>>;
 };
 
+export type Web3_PageHero = {
+  __typename?: 'Web3_pageHero';
+  tagline_top?: Maybe<Scalars['String']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
+  tagline_bottom?: Maybe<Scalars['String']['output']>;
+};
+
+export type Web3_PageMarquee = {
+  __typename?: 'Web3_pageMarquee';
+  items?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+};
+
+export type Web3_PageBrand_Bio = {
+  __typename?: 'Web3_pageBrand_bio';
+  bio?: Maybe<Scalars['String']['output']>;
+};
+
+export type Web3_PageTimeline = {
+  __typename?: 'Web3_pageTimeline';
+  year?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+  company?: Maybe<Scalars['String']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
+};
+
+export type Web3_PageExpertise = {
+  __typename?: 'Web3_pageExpertise';
+  category?: Maybe<Scalars['String']['output']>;
+  items?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+};
+
+export type Web3_PageTech_Stack = {
+  __typename?: 'Web3_pageTech_stack';
+  category?: Maybe<Scalars['String']['output']>;
+  tools?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+};
+
+export type Web3_Page = Node & Document & {
+  __typename?: 'Web3_page';
+  hero?: Maybe<Web3_PageHero>;
+  marquee?: Maybe<Web3_PageMarquee>;
+  brand_bio?: Maybe<Web3_PageBrand_Bio>;
+  timeline?: Maybe<Array<Maybe<Web3_PageTimeline>>>;
+  expertise?: Maybe<Array<Maybe<Web3_PageExpertise>>>;
+  tech_stack?: Maybe<Array<Maybe<Web3_PageTech_Stack>>>;
+  id: Scalars['ID']['output'];
+  _sys: SystemInfo;
+  _values: Scalars['JSON']['output'];
+};
+
+export type Web3_PageHeroFilter = {
+  tagline_top?: InputMaybe<StringFilter>;
+  name?: InputMaybe<StringFilter>;
+  tagline_bottom?: InputMaybe<StringFilter>;
+};
+
+export type Web3_PageMarqueeFilter = {
+  items?: InputMaybe<StringFilter>;
+};
+
+export type Web3_PageBrand_BioFilter = {
+  bio?: InputMaybe<StringFilter>;
+};
+
+export type Web3_PageTimelineFilter = {
+  year?: InputMaybe<StringFilter>;
+  title?: InputMaybe<StringFilter>;
+  company?: InputMaybe<StringFilter>;
+  description?: InputMaybe<StringFilter>;
+};
+
+export type Web3_PageExpertiseFilter = {
+  category?: InputMaybe<StringFilter>;
+  items?: InputMaybe<StringFilter>;
+};
+
+export type Web3_PageTech_StackFilter = {
+  category?: InputMaybe<StringFilter>;
+  tools?: InputMaybe<StringFilter>;
+};
+
+export type Web3_PageFilter = {
+  hero?: InputMaybe<Web3_PageHeroFilter>;
+  marquee?: InputMaybe<Web3_PageMarqueeFilter>;
+  brand_bio?: InputMaybe<Web3_PageBrand_BioFilter>;
+  timeline?: InputMaybe<Web3_PageTimelineFilter>;
+  expertise?: InputMaybe<Web3_PageExpertiseFilter>;
+  tech_stack?: InputMaybe<Web3_PageTech_StackFilter>;
+};
+
+export type Web3_PageConnectionEdges = {
+  __typename?: 'Web3_pageConnectionEdges';
+  cursor: Scalars['String']['output'];
+  node?: Maybe<Web3_Page>;
+};
+
+export type Web3_PageConnection = Connection & {
+  __typename?: 'Web3_pageConnection';
+  pageInfo: PageInfo;
+  totalCount: Scalars['Float']['output'];
+  edges?: Maybe<Array<Maybe<Web3_PageConnectionEdges>>>;
+};
+
 export type Mutation = {
   __typename?: 'Mutation';
   addPendingDocument: DocumentNode;
@@ -480,6 +614,8 @@ export type Mutation = {
   createHobby: Hobby;
   updateDeclaration: Declaration;
   createDeclaration: Declaration;
+  updateWeb3_page: Web3_Page;
+  createWeb3_page: Web3_Page;
 };
 
 
@@ -587,6 +723,18 @@ export type MutationCreateDeclarationArgs = {
   params: DeclarationMutation;
 };
 
+
+export type MutationUpdateWeb3_PageArgs = {
+  relativePath: Scalars['String']['input'];
+  params: Web3_PageMutation;
+};
+
+
+export type MutationCreateWeb3_PageArgs = {
+  relativePath: Scalars['String']['input'];
+  params: Web3_PageMutation;
+};
+
 export type DocumentUpdateMutation = {
   profile?: InputMaybe<ProfileMutation>;
   experience?: InputMaybe<ExperienceMutation>;
@@ -594,6 +742,7 @@ export type DocumentUpdateMutation = {
   skill?: InputMaybe<SkillMutation>;
   hobby?: InputMaybe<HobbyMutation>;
   declaration?: InputMaybe<DeclarationMutation>;
+  web3_page?: InputMaybe<Web3_PageMutation>;
   relativePath?: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -604,6 +753,12 @@ export type DocumentMutation = {
   skill?: InputMaybe<SkillMutation>;
   hobby?: InputMaybe<HobbyMutation>;
   declaration?: InputMaybe<DeclarationMutation>;
+  web3_page?: InputMaybe<Web3_PageMutation>;
+};
+
+export type ProfileStrengthsMutation = {
+  title?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type ProfileMutation = {
@@ -613,6 +768,7 @@ export type ProfileMutation = {
   email?: InputMaybe<Scalars['String']['input']>;
   phone?: InputMaybe<Scalars['String']['input']>;
   image?: InputMaybe<Scalars['String']['input']>;
+  strengths?: InputMaybe<Array<InputMaybe<ProfileStrengthsMutation>>>;
 };
 
 export type ExperienceMutation = {
@@ -646,7 +802,47 @@ export type DeclarationMutation = {
   name?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type ProfilePartsFragment = { __typename: 'Profile', name: string, role: string, summary?: string | null, email?: string | null, phone?: string | null, image?: string | null };
+export type Web3_PageHeroMutation = {
+  tagline_top?: InputMaybe<Scalars['String']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  tagline_bottom?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type Web3_PageMarqueeMutation = {
+  items?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type Web3_PageBrand_BioMutation = {
+  bio?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type Web3_PageTimelineMutation = {
+  year?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  company?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type Web3_PageExpertiseMutation = {
+  category?: InputMaybe<Scalars['String']['input']>;
+  items?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type Web3_PageTech_StackMutation = {
+  category?: InputMaybe<Scalars['String']['input']>;
+  tools?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type Web3_PageMutation = {
+  hero?: InputMaybe<Web3_PageHeroMutation>;
+  marquee?: InputMaybe<Web3_PageMarqueeMutation>;
+  brand_bio?: InputMaybe<Web3_PageBrand_BioMutation>;
+  timeline?: InputMaybe<Array<InputMaybe<Web3_PageTimelineMutation>>>;
+  expertise?: InputMaybe<Array<InputMaybe<Web3_PageExpertiseMutation>>>;
+  tech_stack?: InputMaybe<Array<InputMaybe<Web3_PageTech_StackMutation>>>;
+};
+
+export type ProfilePartsFragment = { __typename: 'Profile', name: string, role: string, summary?: string | null, email?: string | null, phone?: string | null, image?: string | null, strengths?: Array<{ __typename: 'ProfileStrengths', title?: string | null, description?: string | null } | null> | null };
 
 export type ExperiencePartsFragment = { __typename: 'Experience', role: string, company: string, duration?: string | null, description?: Array<string | null> | null, order?: number | null };
 
@@ -658,12 +854,14 @@ export type HobbyPartsFragment = { __typename: 'Hobby', name: string, icon?: str
 
 export type DeclarationPartsFragment = { __typename: 'Declaration', statement?: string | null, name?: string | null };
 
+export type Web3_PagePartsFragment = { __typename: 'Web3_page', hero?: { __typename: 'Web3_pageHero', tagline_top?: string | null, name?: string | null, tagline_bottom?: string | null } | null, marquee?: { __typename: 'Web3_pageMarquee', items?: Array<string | null> | null } | null, brand_bio?: { __typename: 'Web3_pageBrand_bio', bio?: string | null } | null, timeline?: Array<{ __typename: 'Web3_pageTimeline', year?: string | null, title?: string | null, company?: string | null, description?: string | null } | null> | null, expertise?: Array<{ __typename: 'Web3_pageExpertise', category?: string | null, items?: Array<string | null> | null } | null> | null, tech_stack?: Array<{ __typename: 'Web3_pageTech_stack', category?: string | null, tools?: Array<string | null> | null } | null> | null };
+
 export type ProfileQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
 }>;
 
 
-export type ProfileQuery = { __typename?: 'Query', profile: { __typename: 'Profile', id: string, name: string, role: string, summary?: string | null, email?: string | null, phone?: string | null, image?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
+export type ProfileQuery = { __typename?: 'Query', profile: { __typename: 'Profile', id: string, name: string, role: string, summary?: string | null, email?: string | null, phone?: string | null, image?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, strengths?: Array<{ __typename: 'ProfileStrengths', title?: string | null, description?: string | null } | null> | null } };
 
 export type ProfileConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
@@ -675,7 +873,7 @@ export type ProfileConnectionQueryVariables = Exact<{
 }>;
 
 
-export type ProfileConnectionQuery = { __typename?: 'Query', profileConnection: { __typename?: 'ProfileConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'ProfileConnectionEdges', cursor: string, node?: { __typename: 'Profile', id: string, name: string, role: string, summary?: string | null, email?: string | null, phone?: string | null, image?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
+export type ProfileConnectionQuery = { __typename?: 'Query', profileConnection: { __typename?: 'ProfileConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'ProfileConnectionEdges', cursor: string, node?: { __typename: 'Profile', id: string, name: string, role: string, summary?: string | null, email?: string | null, phone?: string | null, image?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, strengths?: Array<{ __typename: 'ProfileStrengths', title?: string | null, description?: string | null } | null> | null } | null } | null> | null } };
 
 export type ExperienceQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
@@ -772,6 +970,25 @@ export type DeclarationConnectionQueryVariables = Exact<{
 
 export type DeclarationConnectionQuery = { __typename?: 'Query', declarationConnection: { __typename?: 'DeclarationConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'DeclarationConnectionEdges', cursor: string, node?: { __typename: 'Declaration', id: string, statement?: string | null, name?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
 
+export type Web3_PageQueryVariables = Exact<{
+  relativePath: Scalars['String']['input'];
+}>;
+
+
+export type Web3_PageQuery = { __typename?: 'Query', web3_page: { __typename: 'Web3_page', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, hero?: { __typename: 'Web3_pageHero', tagline_top?: string | null, name?: string | null, tagline_bottom?: string | null } | null, marquee?: { __typename: 'Web3_pageMarquee', items?: Array<string | null> | null } | null, brand_bio?: { __typename: 'Web3_pageBrand_bio', bio?: string | null } | null, timeline?: Array<{ __typename: 'Web3_pageTimeline', year?: string | null, title?: string | null, company?: string | null, description?: string | null } | null> | null, expertise?: Array<{ __typename: 'Web3_pageExpertise', category?: string | null, items?: Array<string | null> | null } | null> | null, tech_stack?: Array<{ __typename: 'Web3_pageTech_stack', category?: string | null, tools?: Array<string | null> | null } | null> | null } };
+
+export type Web3_PageConnectionQueryVariables = Exact<{
+  before?: InputMaybe<Scalars['String']['input']>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Float']['input']>;
+  last?: InputMaybe<Scalars['Float']['input']>;
+  sort?: InputMaybe<Scalars['String']['input']>;
+  filter?: InputMaybe<Web3_PageFilter>;
+}>;
+
+
+export type Web3_PageConnectionQuery = { __typename?: 'Query', web3_pageConnection: { __typename?: 'Web3_pageConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'Web3_pageConnectionEdges', cursor: string, node?: { __typename: 'Web3_page', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, hero?: { __typename: 'Web3_pageHero', tagline_top?: string | null, name?: string | null, tagline_bottom?: string | null } | null, marquee?: { __typename: 'Web3_pageMarquee', items?: Array<string | null> | null } | null, brand_bio?: { __typename: 'Web3_pageBrand_bio', bio?: string | null } | null, timeline?: Array<{ __typename: 'Web3_pageTimeline', year?: string | null, title?: string | null, company?: string | null, description?: string | null } | null> | null, expertise?: Array<{ __typename: 'Web3_pageExpertise', category?: string | null, items?: Array<string | null> | null } | null> | null, tech_stack?: Array<{ __typename: 'Web3_pageTech_stack', category?: string | null, tools?: Array<string | null> | null } | null> | null } | null } | null> | null } };
+
 export const ProfilePartsFragmentDoc = gql`
     fragment ProfileParts on Profile {
   __typename
@@ -781,6 +998,11 @@ export const ProfilePartsFragmentDoc = gql`
   email
   phone
   image
+  strengths {
+    __typename
+    title
+    description
+  }
 }
     `;
 export const ExperiencePartsFragmentDoc = gql`
@@ -822,6 +1044,42 @@ export const DeclarationPartsFragmentDoc = gql`
   __typename
   statement
   name
+}
+    `;
+export const Web3_PagePartsFragmentDoc = gql`
+    fragment Web3_pageParts on Web3_page {
+  __typename
+  hero {
+    __typename
+    tagline_top
+    name
+    tagline_bottom
+  }
+  marquee {
+    __typename
+    items
+  }
+  brand_bio {
+    __typename
+    bio
+  }
+  timeline {
+    __typename
+    year
+    title
+    company
+    description
+  }
+  expertise {
+    __typename
+    category
+    items
+  }
+  tech_stack {
+    __typename
+    category
+    tools
+  }
 }
     `;
 export const ProfileDocument = gql`
@@ -1166,6 +1424,63 @@ export const DeclarationConnectionDocument = gql`
   }
 }
     ${DeclarationPartsFragmentDoc}`;
+export const Web3_PageDocument = gql`
+    query web3_page($relativePath: String!) {
+  web3_page(relativePath: $relativePath) {
+    ... on Document {
+      _sys {
+        filename
+        basename
+        hasReferences
+        breadcrumbs
+        path
+        relativePath
+        extension
+      }
+      id
+    }
+    ...Web3_pageParts
+  }
+}
+    ${Web3_PagePartsFragmentDoc}`;
+export const Web3_PageConnectionDocument = gql`
+    query web3_pageConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: Web3_pageFilter) {
+  web3_pageConnection(
+    before: $before
+    after: $after
+    first: $first
+    last: $last
+    sort: $sort
+    filter: $filter
+  ) {
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+    totalCount
+    edges {
+      cursor
+      node {
+        ... on Document {
+          _sys {
+            filename
+            basename
+            hasReferences
+            breadcrumbs
+            path
+            relativePath
+            extension
+          }
+          id
+        }
+        ...Web3_pageParts
+      }
+    }
+  }
+}
+    ${Web3_PagePartsFragmentDoc}`;
 export type Requester<C= {}> = <R, V>(doc: DocumentNode, vars?: V, options?: C) => Promise<R>
   export function getSdk<C>(requester: Requester<C>) {
     return {
@@ -1204,6 +1519,12 @@ export type Requester<C= {}> = <R, V>(doc: DocumentNode, vars?: V, options?: C) 
       },
     declarationConnection(variables?: DeclarationConnectionQueryVariables, options?: C): Promise<{data: DeclarationConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: DeclarationConnectionQueryVariables, query: string}> {
         return requester<{data: DeclarationConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: DeclarationConnectionQueryVariables, query: string}, DeclarationConnectionQueryVariables>(DeclarationConnectionDocument, variables, options);
+      },
+    web3_page(variables: Web3_PageQueryVariables, options?: C): Promise<{data: Web3_PageQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: Web3_PageQueryVariables, query: string}> {
+        return requester<{data: Web3_PageQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: Web3_PageQueryVariables, query: string}, Web3_PageQueryVariables>(Web3_PageDocument, variables, options);
+      },
+    web3_pageConnection(variables?: Web3_PageConnectionQueryVariables, options?: C): Promise<{data: Web3_PageConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: Web3_PageConnectionQueryVariables, query: string}> {
+        return requester<{data: Web3_PageConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: Web3_PageConnectionQueryVariables, query: string}, Web3_PageConnectionQueryVariables>(Web3_PageConnectionDocument, variables, options);
       }
     };
   }

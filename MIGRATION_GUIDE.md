@@ -1,6 +1,6 @@
 # TeleportHQ Migration Guide & Safety Protocol
 
-This guide outlines the steps and safety measures for migrating `ree-portfolio` to TeleportHQ while preserving critical functionality.
+This guide outlines the steps and safety measures for migrating `reet-portfolio` to TeleportHQ while preserving critical functionality.
 
 ## 1. Project Overview & Editing
 This project is configured to support **full visual editing** in TeleportHQ for both the main site and the Web3 subdomain.

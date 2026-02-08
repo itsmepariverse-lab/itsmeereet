@@ -18,8 +18,16 @@ const expertiseData = [
     }
 ];
 
-export default function Skills() {
+export default function Skills({ data }: { data: any[] }) {
     const [activeTab, setActiveTab] = React.useState(0);
+    const expertiseData = data || [
+        {
+            category: "Education",
+            items: ["M.Sc. Physics (Pursuing)", "B.Sc. Physics", "Core Scientific Principles", "Mathematical Logic"]
+        }
+    ];
+
+    if (!expertiseData || expertiseData.length === 0) return null;
 
     return (
         <section className="relative w-full py-32 px-6 bg-transparent overflow-hidden">
@@ -59,7 +67,7 @@ export default function Skills() {
                     className="bg-card-bg/30 backdrop-blur-xl border border-white/5 p-8 md:p-12 rounded-3xl min-h-[350px] flex flex-col items-center justify-center text-center"
                 >
                     <div className="flex flex-col items-center gap-6">
-                        {expertiseData[activeTab].items.map((item, i) => (
+                        {expertiseData[activeTab].items && expertiseData[activeTab].items.map((item: string, i: number) => (
                             <motion.div
                                 key={i}
                                 initial={{ opacity: 0, y: 10 }}

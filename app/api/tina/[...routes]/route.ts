@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { TinaNodeBackend, LocalBackendAuthProvider } from "@tinacms/datalayer";
 import { TinaAuthJSOptions, AuthJsBackendAuthProvider } from "tinacms-authjs";
 import databaseClient from "../../../../tina/database";
-import { tinaConfig } from "../../../../tina/config";
+import tinaConfig from "../../../../tina/config";
 
 const isLocal = process.env.TINA_PUBLIC_IS_LOCAL === "true";
 

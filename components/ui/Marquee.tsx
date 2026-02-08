@@ -11,7 +11,16 @@ const marqueeItems = [
     'PHYSICS SCHOLAR'
 ];
 
-export default function Marquee() {
+export default function Marquee({ items }: { items: string[] }) {
+    const marqueeItems = items || [
+        'WEB3 OPERATIONS',
+        'COMMUNITY STRATEGY',
+        'DECENTRALIZED GOVERNANCE',
+        'PROTOCOL SECURITY',
+        'ECOSYSTEM GROWTH',
+        'PHYSICS SCHOLAR'
+    ];
+
     return (
         <div className="relative w-full py-2 bg-nebula-pink overflow-hidden z-40 border-y border-white/10 mt-16 md:mt-20">
             <div className="flex animate-marquee whitespace-nowrap">

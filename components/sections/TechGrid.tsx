@@ -22,7 +22,19 @@ const techStack = [
     },
 ];
 
-export default function TechGrid() {
+export default function TechGrid({ data }: { data: any[] }) {
+    const techStack = data || [
+        {
+            category: 'Moderation Suite',
+            tools: ['Discord (Advanced Architecture)', 'Wick', 'MEE6', 'Carl-bot', 'Telegram (Combot, Rose, Shield)'],
+        }
+    ];
+
+    if (!techStack || techStack.length === 0) return null;
+
+    // Helper to get item by index safely or return default empty object to avoid crash
+    const getItem = (idx: number) => techStack[idx] || { category: '', tools: [] };
+
     return (
         <section className="relative w-full py-24 px-6 md:px-12 bg-transparent">
             <h2 className="text-4xl md:text-6xl font-heading font-bold text-center text-white mb-20 tracking-tighter uppercase">
@@ -39,10 +51,10 @@ export default function TechGrid() {
                 >
                     <div className="absolute inset-0 bg-nebula-pink/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                     <h3 className="text-2xl font-heading font-bold text-white mb-6 uppercase tracking-wider group-hover:text-cyber-cyan transition-colors">
-                        Moderation Suite
+                        {getItem(0).category}
                     </h3>
                     <div className="flex flex-wrap gap-2">
-                        {techStack[0].tools.map((tool, i) => (
+                        {getItem(0).tools && getItem(0).tools.map((tool: string, i: number) => (
                             <span key={i} className="px-3 py-1.5 bg-black/50 border border-white/10 text-gray-400 text-sm font-mono rounded-lg hover:bg-cyber-cyan/10 hover:border-cyber-cyan/50 hover:text-cyber-cyan transition-colors cursor-default">
                                 {tool}
                             </span>
@@ -60,10 +72,10 @@ export default function TechGrid() {
                 >
                     <div className="absolute inset-0 bg-nebula-pink/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                     <h3 className="text-xl font-heading font-bold text-white mb-6 uppercase tracking-wider group-hover:text-cyber-cyan transition-colors">
-                        Growth Tools
+                        {getItem(1).category}
                     </h3>
                     <div className="flex flex-wrap gap-2">
-                        {techStack[1].tools.map((tool, i) => (
+                        {getItem(1).tools && getItem(1).tools.map((tool: string, i: number) => (
                             <span key={i} className="px-3 py-1 text-xs font-mono text-gray-400 bg-black/50 border border-white/10 rounded-lg">
                                 {tool}
                             </span>
@@ -81,10 +93,10 @@ export default function TechGrid() {
                 >
                     <div className="absolute inset-0 bg-nebula-pink/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                     <h3 className="text-xl font-heading font-bold text-white mb-6 uppercase tracking-wider group-hover:text-cyber-cyan transition-colors">
-                        Operations
+                        {getItem(2).category}
                     </h3>
                     <div className="flex flex-wrap gap-2">
-                        {techStack[2].tools.map((tool, i) => (
+                        {getItem(2).tools && getItem(2).tools.map((tool: string, i: number) => (
                             <span key={i} className="px-3 py-1 text-xs font-mono text-gray-400 bg-black/50 border border-white/10 rounded-lg">
                                 {tool}
                             </span>
@@ -104,10 +116,10 @@ export default function TechGrid() {
                         <span className="text-8xl font-heading font-black">SEC</span>
                     </div>
                     <h3 className="text-2xl font-heading font-bold text-white mb-6 uppercase tracking-wider">
-                        Security Tools
+                        {getItem(3).category}
                     </h3>
                     <div className="flex flex-wrap gap-4">
-                        {techStack[3].tools.map((tool, i) => (
+                        {getItem(3).tools && getItem(3).tools.map((tool: string, i: number) => (
                             <span key={i} className="text-lg font-heading font-bold text-nebula-pink hover:text-white transition-colors">
                                 {tool}
                             </span>
