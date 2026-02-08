@@ -13,7 +13,7 @@ const getApiUrl = () => {
         ? `https://${process.env.VERCEL_URL}`
         : isLocal
             ? "http://localhost:3000"
-            : ""; // Fallback or handle error
+            : "https://itsmereet.in"; // Fallback to production URL
 
     return `${base}/api/tina/graphql`;
 };
