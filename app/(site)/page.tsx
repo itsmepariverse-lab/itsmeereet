@@ -1,62 +1,43 @@
-
+import Header from '@/components/ui/Header';
+import Scene from '@/components/canvas/Scene';
+import Hero from '@/components/sections/Hero';
+import BrandBio from '@/components/sections/BrandBio';
+import Timeline from '@/components/sections/Timeline';
+import Skills from '@/components/sections/Skills';
+import TechGrid from '@/components/sections/TechGrid';
+import Footer from '@/components/ui/Footer';
+import BackgroundParticles from '@/components/ui/BackgroundParticles';
+import Marquee from '@/components/ui/Marquee';
 import client from "@/lib/tina-client";
-import HomeClient from '@/components/HomeClient';
-import type { Metadata } from 'next';
 
 export const dynamic = "force-dynamic";
 
-export const metadata: Metadata = {
-    title: 'Reet Kumari | Operations Executive',
-    description: 'Operations Executive & Administrative Coordinator specializing in workflow optimization and efficiency.',
-    robots: {
-        index: true,
-        follow: true,
-    },
+export const metadata = {
+  title: 'Pari Web3 | Web3 Operations',
+  description: 'Web3 Operations Expert & Community Strategist',
 };
 
 export default async function Home() {
-    // Fetch data from TinaCMS
-    const profileResponse = await client.queries.profile({ relativePath: "index.md" });
-    const declarationResponse = await client.queries.declaration({ relativePath: "index.md" });
-    const experienceResponse = await client.queries.experienceConnection();
-    const educationResponse = await client.queries.educationConnection();
-    const skillsResponse = await client.queries.skillConnection();
-    const hobbiesResponse = await client.queries.hobbyConnection();
+  const result = await client.queries.web3_page({ relativePath: "index.md" });
+  const data = result.data.web3_page;
 
-    const profile = profileResponse.data.profile;
-    const declaration = declarationResponse.data.declaration;
+  return (
+    <main className="relative w-full min-h-screen overflow-x-hidden bg-obsidian text-white">
+      <div className="grain-overlay" />
+      <div className="aurora-bg" />
+      <BackgroundParticles />
+      <Header />
+      <Marquee items={data.marquee?.items?.filter((item): item is string => item !== null) || []} />
+      <Scene />
 
-    // Transform connection data to arrays
-    const experience = experienceResponse.data.experienceConnection.edges?.map(edge => edge?.node).filter(Boolean) || [];
-    const education = educationResponse.data.educationConnection.edges?.map(edge => edge?.node).filter(Boolean) || [];
-    const skills = skillsResponse.data.skillConnection.edges?.map(edge => edge?.node).filter(Boolean) || [];
-    const hobbies = hobbiesResponse.data.hobbyConnection.edges?.map(edge => edge?.node).filter(Boolean) || [];
-
-    // Sort experience and education by order if available
-    // Note: Assuming 'order' field exists in schema as per HomeClient interfaces, otherwise strict sort might need check
-    experience.sort((a: any, b: any) => (a.order || 99) - (b.order || 99));
-    education.sort((a: any, b: any) => (a.order || 99) - (b.order || 99));
-
-    return (
-        <HomeClient
-            profile={{
-                name: profile.name || "",
-                role: profile.role || "",
-                summary: profile.summary || "",
-                email: profile.email || "",
-                phone: profile.phone || "",
-                target_roles: ((profile as any).target_roles || []).filter((r: any): r is string => r !== null),
-                credentials: ((profile as any).credentials || []).filter((c: any): c is { label: string; value: string } => c !== null && !!c.label && !!c.value).map((c: any) => ({ label: c.label!, value: c.value! })),
-                strengths: (profile.strengths || []).filter((s: any): s is { title: string; description: string } => s !== null && !!s.title && !!s.description).map((s: any) => ({ title: s.title!, description: s.description! })),
-            }}
-            experience={experience as any}
-            education={education as any}
-            skills={skills as any}
-            hobbies={hobbies as any}
-            declaration={{
-                statement: declaration.statement || "",
-                name: declaration.name || "",
-            }}
-        />
-    );
+      <div className="relative z-10">
+        <Hero data={data.hero || {}} />
+        <BrandBio data={data.brand_bio || {}} />
+        <Timeline items={data.timeline?.filter(t => t !== null) || []} />
+        <Skills data={data.expertise?.filter(t => t !== null) || []} />
+        <TechGrid data={data.tech_stack?.filter(t => t !== null) || []} />
+        <Footer />
+      </div>
+    </main>
+  );
 }

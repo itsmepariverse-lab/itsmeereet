@@ -22,7 +22,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: 'Reet Kumari | Web3 Operations Expert',
+  title: 'Pari Web3 | Web3 Operations Expert',
   description: 'Web3 Operations Expert & Community Strategist.',
 };
 

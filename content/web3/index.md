@@ -1,7 +1,7 @@
 ---
 hero:
   tagline_top: India based
-  name: REET KUMARI
+  name: PARI WEB3
   tagline_bottom: Web3 Operations Expert | Community Strategist
 marquee:
   items:
