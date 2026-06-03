@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Twitter, Github, Linkedin, Mail } from 'lucide-react';
+import { Twitter, Send, Mail } from 'lucide-react';
 import Magnetic from './Magnetic';
 
 export default function Footer() {
@@ -15,16 +15,13 @@ export default function Footer() {
 
                 <div className="flex items-center gap-6">
                     <Magnetic>
-                        <a href="#" className="text-gray-400 hover:text-nebula-pink transition-colors"><Twitter size={20} /></a>
+                        <a href="https://x.com/Pari_Web3" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-nebula-pink transition-colors"><Twitter size={20} /></a>
                     </Magnetic>
                     <Magnetic>
-                        <a href="#" className="text-gray-400 hover:text-cyber-cyan transition-colors"><Github size={20} /></a>
+                        <a href="https://t.me/pari_web3" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-cyber-cyan transition-colors"><Send size={20} /></a>
                     </Magnetic>
                     <Magnetic>
-                        <a href="#" className="text-gray-400 hover:text-nebula-pink transition-colors"><Linkedin size={20} /></a>
-                    </Magnetic>
-                    <Magnetic>
-                        <a href="#" className="text-gray-400 hover:text-cyber-cyan transition-colors"><Mail size={20} /></a>
+                        <a href="mailto:itsmepariverse@gmail.com" className="text-gray-400 hover:text-nebula-pink transition-colors"><Mail size={20} /></a>
                     </Magnetic>
                 </div>
             </div>

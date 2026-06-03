@@ -12,6 +12,7 @@ import TechGrid from '@/components/sections/TechGrid';
 import Footer from '@/components/ui/Footer';
 import BackgroundParticles from '@/components/ui/BackgroundParticles';
 import Marquee from '@/components/ui/Marquee';
+import Contact from '@/components/sections/Contact';
 
 export const dynamic = "force-dynamic";
 
@@ -40,6 +41,7 @@ export default async function Home() {
         <Timeline items={data.timeline?.filter((t: any) => t !== null) || []} />
         <Skills data={data.expertise?.filter((t: any) => t !== null) || []} />
         <TechGrid data={data.tech_stack?.filter((t: any) => t !== null) || []} />
+        <Contact />
         <Footer />
       </div>
     </main>
