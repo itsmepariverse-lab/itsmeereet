@@ -14,6 +14,10 @@ marquee:
 brand_bio:
   bio: 'I am a Web3 expert applying the laws of logic to decentralized ecosystems. Since early 2023, I have built and secured communities for top-tier protocols like Kima and Velodrome. I combine high-speed administrative precision with decentralized expertise to architect order within the blockchain ecosystem.'
 timeline:
+  - year: Apr 2026 – Present
+    title: Community Moderator
+    company: ShiftRWA
+    description: 'Community moderation and ecosystem engagement.'
   - year: 2024 – Present
     title: Community Moderator
     company: Kima Network
