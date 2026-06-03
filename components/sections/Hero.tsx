@@ -18,11 +18,11 @@ export default function Hero({ data }: { data: Record<string, any> }) {
                     </h2>
                     <img 
                         src="/pari.jpg" 
-                        alt="Pari Web3" 
+                        alt="Reet Kumari" 
                         className="w-32 h-32 md:w-48 md:h-48 rounded-full mx-auto object-cover border-4 border-cyber-cyan/30 mb-6 shadow-[0_0_30px_rgba(0,242,255,0.2)]" 
                     />
                     <h1 className="text-6xl md:text-8xl lg:text-9xl font-heading font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-nebula-pink/50">
-                        {data?.name || 'PARI WEB3'}
+                        {data?.name || 'REET KUMARI'}
                     </h1>
                     <div className="h-1 w-24 mx-auto bg-cyber-cyan/50 rounded-full" />
                     <motion.p

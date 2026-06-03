@@ -1,4 +1,0 @@
----
-name: "Reading Literature"
-icon: "📚"
----

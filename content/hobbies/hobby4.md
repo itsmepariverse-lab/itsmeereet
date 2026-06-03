@@ -1,4 +1,0 @@
----
-name: "Creative Arts"
-icon: "🎨"
----

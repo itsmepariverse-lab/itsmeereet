@@ -9,8 +9,8 @@ export default function Footer() {
         <footer className="relative w-full py-12 px-6 bg-black border-t border-white/10 z-10">
             <div className="container mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
                 <div className="flex items-center gap-2">
-                    <span className="text-nebula-pink font-heading font-bold text-xl">P</span>
-                    <span className="text-white font-mono text-sm">© 2024 Pari Web3</span>
+                    <span className="text-nebula-pink font-heading font-bold text-xl">R</span>
+                    <span className="text-white font-mono text-sm">© {new Date().getFullYear()} Reet Kumari</span>
                 </div>
 
                 <div className="flex items-center gap-6">
