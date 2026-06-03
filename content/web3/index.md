@@ -33,7 +33,7 @@ timeline:
 expertise:
   - category: Education
     items:
-      - M.Sc. Physics (Pursuing)
+      - M.Sc. Physics (March 2024 - June 2026)
       - B.Sc. Physics
       - Core Scientific Principles
       - Mathematical Logic
